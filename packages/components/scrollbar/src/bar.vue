@@ -23,9 +23,10 @@ const moveY = ref(0)
 const handleScroll = (wrap: HTMLDivElement) => {
   // 滚动容器对象
   if (wrap) {
+    // 去除滚动条大小的区域
     const offsetHeight = wrap.offsetHeight - GAP
     const offsetWidth = wrap.offsetWidth - GAP
-
+    // 移动距离 = （（据顶部距离*100）/容器高度）/比率
     moveY.value = ((wrap.scrollTop * 100) / offsetHeight) * props.ratioY
     moveX.value = ((wrap.scrollLeft * 100) / offsetWidth) * props.ratioX
   }
