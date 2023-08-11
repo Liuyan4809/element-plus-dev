@@ -5,12 +5,14 @@ export const GAP = 4 // top 2 + bottom 2 of bar instance
 
 export const BAR_MAP = {
   vertical: {
+    // 元素高度
     offset: 'offsetHeight',
     scroll: 'scrollTop',
     scrollSize: 'scrollHeight',
     size: 'height',
     key: 'vertical',
     axis: 'Y',
+    // 鼠标事件发生时，应用客户端的直角坐标系（与滚动无关）
     client: 'clientY',
     direction: 'top',
   },
@@ -26,6 +28,7 @@ export const BAR_MAP = {
   },
 } as const
 
+// 被动
 export const renderThumbStyle = ({
   move,
   size,

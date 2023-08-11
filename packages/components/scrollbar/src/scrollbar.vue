@@ -126,19 +126,31 @@ const setScrollLeft = (value: number) => {
 }
 
 const update = () => {
+  // 包装对象
   if (!wrapRef.value) return
-  const offsetHeight = wrapRef.value.offsetHeight - GAP
-  const offsetWidth = wrapRef.value.offsetWidth - GAP
 
+  // 偏移量高度
+  const offsetHeight = wrapRef.value.offsetHeight - GAP
+  // 偏移量宽度
+  const offsetWidth = wrapRef.value.offsetWidth - GAP
+  // 偏移量高度的平方 / 包装对象的滚动高度
   const originalHeight = offsetHeight ** 2 / wrapRef.value.scrollHeight
+  // 偏移量高度的宽度 / 包装对象的滚动宽度
   const originalWidth = offsetWidth ** 2 / wrapRef.value.scrollWidth
+  // 选择一个最大值
   const height = Math.max(originalHeight, props.minSize)
+  // 选择一个最大值
   const width = Math.max(originalWidth, props.minSize)
 
+  // y轴比率
   ratioY.value =
+    // 原始高度 /
     originalHeight /
+    // （偏移量高度 - 原始高度） /
     (offsetHeight - originalHeight) /
+    // 最大高度 / （偏移量高度 - 最大高度）
     (height / (offsetHeight - height))
+  // x轴比率
   ratioX.value =
     originalWidth /
     (offsetWidth - originalWidth) /
